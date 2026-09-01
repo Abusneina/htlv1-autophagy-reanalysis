@@ -1,5 +1,7 @@
 # Composition confounding in the canonical ATL expression cohort, and HTLV-1 Tax at autophagy loci
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22235482.svg)](https://doi.org/10.5281/zenodo.22235482)
+
 Code and results for the manuscript by A. M. Abusneina and colleagues
 (University of Benghazi). No new experimental data were generated. Every input is
 public; this repository contains the analysis code, the frozen pre-analysis
