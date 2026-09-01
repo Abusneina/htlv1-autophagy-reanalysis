@@ -1,0 +1,32 @@
+== marker-based lineage scores, ATL (PBMC) vs control (sorted CD4+) ==
+  monocyte    n=14  ATL=+0.13  ctrl=-0.33  p=0.0151
+  neutrophil  n= 6  ATL=-0.30  ctrl=+0.73  p=2.79e-06
+  B cell      n= 7  ATL=+0.26  ctrl=-0.64  p=3.19e-07
+  NK cell     n= 6  ATL=+0.08  ctrl=-0.19  p=0.0938
+  T cell      n= 6  ATL=-0.02  ctrl=+0.04  p=0.803
+  erythroid   n= 5  ATL=+0.42  ctrl=-1.03  p=4.57e-10
+  platelet    n= 4  ATL=-0.06  ctrl=+0.14  p=0.26
+
+== CLEAR module: raw vs adjusted for ALL lineage scores jointly ==
+  clear       raw diff=+0.105 (p=4.58e-05)   adjusted diff=+0.030 (p=0.163)
+  elongation  raw diff=+0.006 (p=0.579)   adjusted diff=+0.018 (p=0.19)
+  fusion      raw diff=-0.012 (p=0.522)   adjusted diff=+0.017 (p=0.364)
+  initiation  raw diff=-0.078 (p=0.0305)   adjusted diff=+0.027 (p=0.439)
+
+== which CLEAR genes carry the ATL increase ==
+    gene  log2FC_ATL_vs_ctrl        p  rho_with_monocyte_score        q
+    CTSB               0.716  7.1e-06                    0.456 3.08e-05
+    HEXA               0.607 4.68e-07                    0.208 6.09e-06
+  MCOLN1               0.495 0.000121                    0.432 0.000392
+     GBA               0.458   0.0491                  -0.0145   0.0911
+    CTSD               0.346    0.106                    0.651    0.139
+ ATP6V1A               0.325   0.0121                    0.145   0.0261
+ ATP6V1H               0.266  0.00944                   0.0871   0.0245
+    TFEB               0.228    0.088                    0.293    0.139
+    TFE3               0.156    0.117                    0.189    0.139
+ATP6V0E1               0.127    0.384                   0.0759    0.416
+    NBR1             -0.0223    0.688                   -0.192    0.688
+    CTSF              -0.563    0.109                  -0.0881    0.139
+  SQSTM1              -0.749 5.64e-06                   -0.133 3.08e-05
+
+Across CLEAR genes, ATL enrichment tracks monocyte association: rho=+0.736, p=0.00411

@@ -1,0 +1,47 @@
+tracks found:
+   GSM9453007_CT_Jurkat_Empty_H3K27ac.bw
+   GSM9453008_CT_Jurkat_Tax_H3K27ac.bw
+   GSM9453009_CT_TL-Om1_Empty_H3K27ac.bw
+   GSM9453011_CT_TL-Om1_Tax_H3K27ac.bw
+  quantified CT_Jurkat_Empty_H3K27ac: 19436 promoters, median 2.580
+  quantified CT_Jurkat_Tax_H3K27ac: 19436 promoters, median 2.937
+  quantified CT_TL-Om1_Empty_H3K27ac: 19436 promoters, median 2.405
+  quantified CT_TL-Om1_Tax_H3K27ac: 19436 promoters, median 2.207
+
+== CT_Jurkat_Tax_H3K27ac vs CT_Jurkat_Empty_H3K27ac ==  (18453 promoters, quantile-matched)
+   global median log2 change +0.000
+   clear       mean log2FC=+0.218  z=+1.04  p_competitive=0.2936  (n=13)
+   elongation  mean log2FC=+0.073  z=+0.39  p_competitive=0.6853  (n=15)
+   fusion      mean log2FC=+0.161  z=+0.78  p_competitive=0.4176  (n=13)
+   initiation  mean log2FC=+0.216  z=+1.00  p_competitive=0.3092  (n=12)
+   CREBBP    log2FC=+0.24
+   EP300     log2FC=+0.31
+   SIRT1     log2FC=+0.37
+   RELB      log2FC=+1.63
+   NFKB2     log2FC=+2.11
+   BATF3     log2FC=+0.66
+   SQSTM1    log2FC=-0.22
+   MAP1LC3B  log2FC=+0.33
+   TFEB      log2FC=+1.16
+   CTSD      log2FC=-0.10
+   BECN1     log2FC=-0.04
+   LAMP1     log2FC=+0.57
+
+== CT_TL-Om1_Tax_H3K27ac vs CT_TL-Om1_Empty_H3K27ac ==  (18349 promoters, quantile-matched)
+   global median log2 change -0.021
+   clear       mean log2FC=+0.096  z=+0.72  p_competitive=0.4600  (n=13)
+   elongation  mean log2FC=+0.013  z=+0.10  p_competitive=0.9169  (n=15)
+   fusion      mean log2FC=-0.023  z=-0.16  p_competitive=0.8812  (n=13)
+   initiation  mean log2FC=+0.079  z=+0.57  p_competitive=0.5546  (n=12)
+   CREBBP    log2FC=-0.03
+   EP300     log2FC=+0.08
+   SIRT1     log2FC=-0.12
+   RELB      log2FC=-0.00
+   NFKB2     log2FC=+0.00
+   BATF3     log2FC=-0.09
+   SQSTM1    log2FC=-0.01
+   MAP1LC3B  log2FC=+0.28
+   TFEB      log2FC=+0.30
+   CTSD      log2FC=+0.05
+   BECN1     log2FC=-0.26
+   LAMP1     log2FC=+0.06

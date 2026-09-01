@@ -1,0 +1,60 @@
+module	gene	stage_role	rationale
+axis	EP300	acetyltransferase	Model A control point; never scored inside a module
+axis	CREBBP	acetyltransferase	Paralog of EP300, reported separately
+axis	SIRT1	deacetylase	Model A counterweight
+initiation	ULK1	ULK complex	Kinase core of initiation
+initiation	ULK2	ULK complex	Paralog, reported with ULK1
+initiation	ATG13	ULK complex	Obligate ULK partner
+initiation	RB1CC1	ULK complex	FIP200
+initiation	ATG101	ULK complex	Completes the ULK complex
+initiation	BECN1	PI3KC3 complex	Leading gene under Model B
+initiation	PIK3C3	PI3KC3 complex	VPS34
+initiation	PIK3R4	PI3KC3 complex	VPS15
+initiation	ATG14	PI3KC3 complex I	Autophagy specific subunit
+initiation	NRBF2	PI3KC3 complex I	Regulatory subunit
+initiation	AMBRA1	PI3KC3 regulation	Activating molecule
+initiation	SH3GLB1	PI3KC3 regulation	Bif-1, named in the Tax lipid raft model
+elongation	ATG3	E2 like	LC3 lipidation
+elongation	ATG4B	protease	LC3 processing
+elongation	ATG5	conjugation	Acetylation target in the 2012 proposal
+elongation	ATG7	E1 like	Acetylation target in the 2012 proposal
+elongation	ATG10	E2 like	Conjugation
+elongation	ATG12	conjugation	Acetylation target in the 2012 proposal
+elongation	ATG16L1	conjugation	Determines lipidation site
+elongation	MAP1LC3A	ATG8 family	LC3A
+elongation	MAP1LC3B	ATG8 family	LC3B, the classical flux readout
+elongation	GABARAP	ATG8 family	Required for fusion competence
+elongation	GABARAPL1	ATG8 family	ATG8 family
+elongation	GABARAPL2	ATG8 family	ATG8 family
+elongation	ATG9A	membrane delivery	Lipid supply
+elongation	WIPI1	PI3P effector	Phagophore expansion
+elongation	WIPI2	PI3P effector	Phagophore expansion
+fusion	STX17	SNARE	Autophagosomal SNARE, central to Model B
+fusion	SNAP29	SNARE	Fusion complex
+fusion	VAMP8	SNARE	Lysosomal SNARE
+fusion	VAMP7	SNARE	Fusion
+fusion	RAB7A	Rab GTPase	Maturation
+fusion	PLEKHM1	tether	HOPS adaptor
+fusion	EPG5	tether	Fusion specificity factor
+fusion	VPS33A	HOPS	Tethering complex
+fusion	VPS16	HOPS	Tethering complex
+fusion	VPS11	HOPS	Tethering complex
+fusion	VPS18	HOPS	Tethering complex
+fusion	VPS39	HOPS	Tethering complex
+fusion	VPS41	HOPS	Tethering complex
+fusion	LAMP1	lysosomal membrane	Lysosome integrity
+fusion	LAMP2	lysosomal membrane	Lysosome integrity
+clear	TFEB	master regulator	Reported separately as well as in the module
+clear	TFE3	master regulator	Redundant with TFEB
+clear	CTSB	hydrolase	CLEAR target
+clear	CTSD	hydrolase	CLEAR target
+clear	CTSF	hydrolase	CLEAR target
+clear	CTSL	hydrolase	CLEAR target
+clear	GBA	hydrolase	CLEAR target
+clear	HEXA	hydrolase	CLEAR target
+clear	MCOLN1	lysosomal channel	CLEAR target
+clear	ATP6V1H	v-ATPase	Acidification
+clear	ATP6V0E1	v-ATPase	Acidification
+clear	ATP6V1A	v-ATPase	Acidification
+clear	SQSTM1	receptor	Transcript is CLEAR and NRF2 driven; protein reads flux
+clear	NBR1	receptor	Cargo receptor

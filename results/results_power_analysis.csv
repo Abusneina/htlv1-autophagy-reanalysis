@@ -1,0 +1,17 @@
+arm,module,n_genes,genome_sd,MDE_log2_80pct,observed,obs_over_MDE
+H3K27ac Jurkat Tax,clear,13,0.751,0.583,0.218,0.37
+H3K27ac Jurkat Tax,elongation,15,0.751,0.543,0.073,0.13
+H3K27ac Jurkat Tax,fusion,13,0.751,0.583,0.161,0.28
+H3K27ac Jurkat Tax,initiation,12,0.751,0.607,0.216,0.36
+H3K27ac TL-Om1 Tax,clear,13,0.488,0.379,0.096,0.25
+H3K27ac TL-Om1 Tax,elongation,15,0.488,0.353,0.013,0.04
+H3K27ac TL-Om1 Tax,fusion,13,0.488,0.379,-0.023,0.06
+H3K27ac TL-Om1 Tax,initiation,12,0.488,0.394,0.079,0.2
+ATAC Tax (empty bg),clear,13,0.422,0.327,0.079,0.24
+ATAC Tax (empty bg),elongation,15,0.422,0.305,0.032,0.11
+ATAC Tax (empty bg),fusion,15,0.422,0.305,-0.051,0.17
+ATAC Tax (empty bg),initiation,12,0.422,0.341,0.02,0.06
+ATAC Tax (IRF4 bg),clear,13,0.543,0.422,0.092,0.22
+ATAC Tax (IRF4 bg),elongation,15,0.543,0.393,0.172,0.44
+ATAC Tax (IRF4 bg),fusion,13,0.543,0.422,-0.048,0.11
+ATAC Tax (IRF4 bg),initiation,12,0.543,0.439,-0.199,0.45

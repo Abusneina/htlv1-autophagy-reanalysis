@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Composition confounding in the canonical ATL expression cohort: analysis code and results"
+message: "If you use this code or the Composition Sensitivity Index, please cite the accompanying paper."
+type: software
+authors:
+  - family-names: Abusneina
+    given-names: Abdelmuhsen M.
+    orcid: "https://orcid.org/0000-0001-9909-5588"
+    affiliation: "Faculty of Biomedical Sciences, University of Benghazi"
+repository-code: "https://github.com/Abusneina/htlv1-autophagy-reanalysis"
+license: MIT

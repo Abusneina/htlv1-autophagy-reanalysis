@@ -1,0 +1,68 @@
+expressed genes with a symbol: 16202  samples: 19
+coverage: {'clear': 0.86, 'elongation': 0.93, 'fusion': 1.0, 'initiation': 0.92, 'axis': 1.0}
+
+== JPX-9, Tax induction (no IRF4) ==   (single library per condition, descriptive)
+   global median shift +0.026
+   clear       mean log2FC=+0.153  z=+0.47  p_competitive=0.5616  (n=12)
+   elongation  mean log2FC=+0.084  z=-0.05  p_competitive=0.9802  (n=14)
+   fusion      mean log2FC=+0.046  z=-0.36  p_competitive=0.7601  (n=15)
+   initiation  mean log2FC=+0.137  z=+0.35  p_competitive=0.6451  (n=11)
+   CREBBP    log2FC=+0.03
+   EP300     log2FC=+0.15
+   SIRT1     log2FC=-0.33
+   SQSTM1    log2FC=-0.15
+   MAP1LC3B  log2FC=+0.01
+   BECN1     log2FC=+0.22
+   LAMP1     log2FC=+0.13
+   CTSD      log2FC=+0.76
+   TFEB      log2FC=+0.94
+   NFKB1     log2FC=-0.07
+   RELA      log2FC=+0.45
+   RELB      log2FC=+3.90
+   NFKB2     log2FC=+0.93
+
+== JPX-9, Tax induction (with IRF4) ==   (single library per condition, descriptive)
+   global median shift +0.000
+   clear       mean log2FC=+0.570  z=+1.97  p_competitive=0.0961  (n=12)
+   elongation  mean log2FC=+0.260  z=+0.58  p_competitive=0.4657  (n=14)
+   fusion      mean log2FC=+0.069  z=-0.38  p_competitive=0.8035  (n=15)
+   initiation  mean log2FC=+0.094  z=-0.21  p_competitive=0.9745  (n=11)
+   CREBBP    log2FC=+0.12
+   EP300     log2FC=+0.01
+   SIRT1     log2FC=-0.30
+   SQSTM1    log2FC=+1.46
+   MAP1LC3B  log2FC=+0.13
+   BECN1     log2FC=+0.07
+   LAMP1     log2FC=+0.38
+   CTSD      log2FC=+0.71
+   TFEB      log2FC=+0.56
+   NFKB1     log2FC=+0.25
+   RELA      log2FC=+0.01
+   RELB      log2FC=+3.57
+   NFKB2     log2FC=+1.34
+
+== Jurkat, Tax on IRF4-WT background ==   (single library per condition, descriptive)
+   global median shift +0.023
+   clear       mean log2FC=+0.289  z=+0.80  p_competitive=0.3751  (n=12)
+   elongation  mean log2FC=-0.177  z=-2.11  p_competitive=0.0108  (n=14)
+   fusion      mean log2FC=-0.066  z=-1.43  p_competitive=0.1018  (n=15)
+   initiation  mean log2FC=+0.145  z=-0.05  p_competitive=0.9340  (n=11)
+   CREBBP    log2FC=-0.30
+   EP300     log2FC=+0.05
+   SIRT1     log2FC=+0.02
+   SQSTM1    log2FC=+1.79
+   MAP1LC3B  log2FC=+0.03
+   BECN1     log2FC=+0.19
+   LAMP1     log2FC=+0.12
+   CTSD      log2FC=+0.31
+   TFEB      log2FC=+0.63
+   NFKB1     log2FC=+1.01
+   RELA      log2FC=-0.04
+   RELB      log2FC=+4.40
+   NFKB2     log2FC=+4.07
+
+== C91/PL, JQ1 vs DMSO (n=3 each, the only replicated contrast) ==
+   clear       mean log2FC=+0.437  z=+2.63  p_competitive=0.0098
+   elongation  mean log2FC=+0.287  z=+2.05  p_competitive=0.0357
+   fusion      mean log2FC=+0.240  z=+1.87  p_competitive=0.0582
+   initiation  mean log2FC=+0.275  z=+1.78  p_competitive=0.0684

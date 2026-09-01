@@ -1,0 +1,23 @@
+method,module,n_PC,cum_var,beta,p
+CIBERSORTx LM22,initiation,0,0.0,-0.078,0.0297
+CIBERSORTx LM22,clear,0,0.0,0.1051,0.0001
+CIBERSORTx LM22,initiation,2,0.27,0.0061,0.901
+CIBERSORTx LM22,clear,2,0.27,0.0754,0.0395
+CIBERSORTx LM22,initiation,3,0.37,-0.0113,0.8258
+CIBERSORTx LM22,clear,3,0.37,0.0882,0.0223
+CIBERSORTx LM22,initiation,5,0.53,-0.0146,0.788
+CIBERSORTx LM22,clear,5,0.53,0.0652,0.0899
+CIBERSORTx LM22,initiation,8,0.7,0.0481,0.3796
+CIBERSORTx LM22,clear,8,0.7,0.037,0.3643
+CIBERSORTx LM22,initiation,11,0.82,0.0406,0.4848
+CIBERSORTx LM22,clear,11,0.82,0.0356,0.4192
+MCP-counter,initiation,0,0.0,-0.078,0.0297
+MCP-counter,clear,0,0.0,0.1051,0.0001
+MCP-counter,initiation,2,0.57,-0.0363,0.3655
+MCP-counter,clear,2,0.57,0.0877,0.0048
+MCP-counter,initiation,3,0.68,-0.031,0.4256
+MCP-counter,clear,3,0.68,0.0868,0.0055
+MCP-counter,initiation,5,0.84,-0.0162,0.7053
+MCP-counter,clear,5,0.84,0.1078,0.0018
+MCP-counter,initiation,8,0.97,0.0073,0.8655
+MCP-counter,clear,8,0.97,0.0993,0.0059

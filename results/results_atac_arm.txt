@@ -1,0 +1,46 @@
+  Empty: median 8.809
+  IRF4: median 7.824
+  Empty_Tax: median 7.772
+  IRF4_Tax: median 8.331
+
+== Tax on empty background: Empty_Tax vs Empty ==  (18477 promoters, quantile-matched)
+   dynamic range sd=0.422
+   clear       mean log2FC=+0.079  z=+0.67  p_competitive=0.4803  (n=13)
+   elongation  mean log2FC=+0.032  z=+0.30  p_competitive=0.7491  (n=15)
+   fusion      mean log2FC=-0.051  z=-0.47  p_competitive=0.6264  (n=15)
+   initiation  mean log2FC=+0.020  z=+0.16  p_competitive=0.8553  (n=12)
+   CREBBP    log2FC=-0.37  pct=0.118
+   EP300     log2FC=-0.16  pct=0.245
+   SIRT1     log2FC=-0.20  pct=0.206
+   RELB      log2FC=+0.16  pct=0.764
+   NFKB2     log2FC=+0.14  pct=0.737
+   BATF3     log2FC=+0.02  pct=0.548
+   DUSP10    log2FC=+0.22  pct=0.812
+   TFEB      log2FC=+0.08  pct=0.650
+   TFE3      log2FC=+0.14  pct=0.744
+   MAP1LC3B  log2FC=-0.10  pct=0.318
+   SQSTM1    log2FC=+0.46  pct=0.907
+   CTSD      log2FC=+0.14  pct=0.742
+   LAMP1     log2FC=+0.07  pct=0.630
+   BECN1     log2FC=-0.21  pct=0.200
+
+== Tax on IRF4 background: IRF4_Tax vs IRF4 ==  (18444 promoters, quantile-matched)
+   dynamic range sd=0.543
+   clear       mean log2FC=+0.092  z=+0.62  p_competitive=0.5206  (n=13)
+   elongation  mean log2FC=+0.172  z=+1.23  p_competitive=0.2197  (n=15)
+   fusion      mean log2FC=-0.048  z=-0.33  p_competitive=0.7454  (n=13)
+   initiation  mean log2FC=-0.199  z=-1.27  p_competitive=0.1978  (n=12)
+   CREBBP    log2FC=+1.85  pct=0.995
+   EP300     log2FC=+0.41  pct=0.820
+   SIRT1     log2FC=+0.48  pct=0.850
+   RELB      log2FC=+0.45  pct=0.839
+   NFKB2     log2FC=+0.10  pct=0.633
+   BATF3     log2FC=+0.32  pct=0.779
+   DUSP10    log2FC=+0.24  pct=0.731
+   TFEB      log2FC=+0.04  pct=0.582
+   TFE3      log2FC=+0.14  pct=0.667
+   MAP1LC3B  log2FC=+0.48  pct=0.850
+   SQSTM1    log2FC=+0.68  pct=0.907
+   CTSD      log2FC=+1.02  pct=0.961
+   LAMP1     log2FC=+0.96  pct=0.955
+   BECN1     log2FC=-0.31  pct=0.232
