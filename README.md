@@ -37,6 +37,8 @@ the CIBERSORTx web portal and the output is included as
 `modules_frozen_v1.tsv` holds the four autophagy modules and the three-gene
 acetylation panel. It was frozen before any dataset was opened and was not edited
 afterwards. Do not modify it if you wish to reproduce the published numbers.
+The pre-analysis protocol, 2026-08-17_1800_HTLV1-Autophagy_Competing-Models_Protocol.docx, holds the eleven discriminating observables and the decision rule.
+It was written on 17 August 2026, before any dataset was opened, and is reproduced here unedited. 
 
 ## Scripts, in execution order
 
