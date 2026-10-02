@@ -99,6 +99,12 @@ tot = sum(cm.values()); cm = {k: v / tot for k, v in cm.items()}
 POOLS = {
     'published (monocytes 55%, B 25%, NK 12%, neutrophils 8%)':
         {'C_mono': 0.40, 'I_mono': 0.08, 'NC_mono': 0.07, 'B_naive': 0.25, 'NK': 0.12, 'Neutrophils': 0.08},
+    'monocyte share 40% (B, NK, neutrophils rebalanced)':
+        {**{k: 0.40 * v / 0.55 for k, v in {'C_mono': 0.40, 'I_mono': 0.08, 'NC_mono': 0.07}.items()},
+         **{k: 0.60 * v / 0.45 for k, v in {'B_naive': 0.25, 'NK': 0.12, 'Neutrophils': 0.08}.items()}},
+    'monocyte share 70% (B, NK, neutrophils rebalanced)':
+        {**{k: 0.70 * v / 0.55 for k, v in {'C_mono': 0.40, 'I_mono': 0.08, 'NC_mono': 0.07}.items()},
+         **{k: 0.30 * v / 0.45 for k, v in {'B_naive': 0.25, 'NK': 0.12, 'Neutrophils': 0.08}.items()}},
     'monocytes only':
         {'C_mono': 0.40 / 0.55, 'I_mono': 0.08 / 0.55, 'NC_mono': 0.07 / 0.55},
     'equal weights across the six populations':

@@ -60,11 +60,18 @@ The expression arm was re-run from a fresh copy of the repository. Every previou
 
 - Enrichment exponent: with alpha = 0 and 0.5 instead of 0.25, CLEAR gives d = 1.15 and 1.23 (q below 0.001) and initiation d = -0.62 and -0.66; elongation, never significant, changes sign. Alpha = 0.25 reproduces `results_modules.csv` exactly.
 - TFEB inside CLEAR: without TFEB the cohort effect is d = 1.10 (P = 1.3e-4); TFEB correlates weakly with the rest of the module (rho = 0.14).
-- Non-T pool: with monocytes alone, equal weights, or weights matched to the cohort's excess, CLEAR reaches the observed d = 1.20 at 4.5 to 5.7 percent non-T content; a pool without monocytes needs 19 percent. No pool reproduces the observed initiation decrease. Without TFEB the crossing is 6.4 to 11.3 percent across the monocyte-containing pools.
+- Non-T pool: with the monocyte share set to 40, 55 (published) and 70 percent, CLEAR reaches the observed d = 1.20 at 7.9, 6.7 and 5.7 percent non-T content; with monocytes alone, equal weights, or weights matched to the cohort's excess it is 4.5 to 5.7 percent; a pool without monocytes needs 19 percent. No pool reproduces the observed initiation decrease (largest fall d = -0.35; the equal-weight pool moves it up to d = +0.90 at 30 percent). Without TFEB the crossing is 8.1 percent in the cohort-matched pool (79 percent monocytes), 6.4 to 11.3 percent in pools with monocyte shares of 55 percent or more, and 15.2 percent in the 40 percent pool.
 
 Outputs: `results_sensitivity_alpha.csv`, `results_sensitivity_tfeb.csv`, `results_sensitivity_nonT_pool.csv`.
 
-## Still missing
+## Wang and Iha gene lists
 
-`wang_iha_degs.json`, the published Wang and Iha (2023) gene lists read by `test_wang_iha.py`, is not in the repository.
+`test_wang_iha.py` read `wang_iha_degs.json` from the top folder, but the file is in `results/`; the script now reads it there. Run end to end, it reproduced `results_wangiha_ferroptosis.csv` and `results_wangiha_autophagy.csv` with a maximum difference of zero.
 
+## Graphical abstract
+
+`make_graphical_abstract.py` reads every plotted number from the deposited tables and writes them to `results/results_graphical_abstract_data.csv` (61 values, including the 51 gene-level points of the middle panel). An earlier draft of the middle panel had been drawn from simulated points; it was replaced before submission.
+
+## Open point
+
+The text of the manuscript says Wang and Iha reported 46 ferroptosis-related genes; `wang_iha_degs.json` holds 45. The difference has not been checked against the original publication.

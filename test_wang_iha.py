@@ -5,7 +5,7 @@ import json, numpy as np, pandas as pd
 from scipy import stats
 import statsmodels.api as sm
 
-D = json.load(open('wang_iha_degs.json'))
+D = json.load(open('results/wang_iha_degs.json'))
 exec(open('run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(','_p=('))
 grp = samples.set_index('gsm').loc[G.columns,'group']; is_atl=(grp=='ATL').values
 

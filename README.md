@@ -1,6 +1,6 @@
 # Composition confounding in the canonical ATL expression cohort, and HTLV-1 Tax at autophagy loci
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22235482.svg)](https://doi.org/10.5281/zenodo.22235482)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22235481.svg)](https://doi.org/10.5281/zenodo.22235481)
 
 Code and results for the manuscript by A. M. Abusneina and colleagues
 (University of Benghazi). No new experimental data were generated. Every input is
@@ -53,11 +53,11 @@ Every script reads its inputs from this folder and writes its tables to `results
 | `grch38.rda` | https://github.com/stephenturner/annotables (file `data/grch38.rda`) | `build_regions.py`, the GSE107011 scripts, `run_tax_arm.py` |
 | MSigDB symbols files for KEGG legacy, KEGG MEDICUS and Reactome | MSigDB (free registration; licensed, so not redistributed) | `csi_metric.py` reads every `.gmt` file in the folder; `kegg_lysosome_decomposition.py` reads the KEGG legacy file |
 
-The two GSE33615 files and the Hallmark collection are committed. `test_wang_iha.py` also reads `wang_iha_degs.json`, the gene lists published by Wang and Iha (2023), which is not yet in this repository.
+The two GSE33615 files and the Hallmark collection are committed. `test_wang_iha.py` reads `results/wang_iha_degs.json`, the gene lists published by Wang and Iha (2023), which is committed.
 
 ### Reproducibility check (release 1.4)
 
-The expression arm was re-run from a fresh copy of this repository: `run_gse33615.py`, `run_mcpcounter.py`, `run_cibersortx.py`, `composition_analysis.py`, `check_composition.py`, `pathway_survey.py`, `power_analysis.py`, `insilico_mixing.py`, `make_figures.py` and `make_fig6.py`. Every table that had been deposited before was reproduced with a maximum difference of zero, except `results_insilico_mixing.csv`: its four autophagy modules agree to within 0.01 in Cohen d and the CLEAR crossing is 6.58 percent against 6.62 percent, but its Hallmark rows, which the manuscript does not cite, differ, and the regenerated table replaces the earlier one. Six tables that the figure and adjustment scripts write had never been deposited and are now included, among them `results_cibersortx_per_gene.csv`, the source of Figure 1a (r = 0.841). The chromatin scripts were not re-run here, since they need the bigWig downloads, and `csi_metric.py` needs the licensed MSigDB collections.
+The expression arm was re-run from a fresh copy of this repository: `run_gse33615.py`, `run_mcpcounter.py`, `run_cibersortx.py`, `composition_analysis.py`, `check_composition.py`, `pathway_survey.py`, `test_wang_iha.py`, `power_analysis.py`, `insilico_mixing.py`, `make_figures.py` and `make_fig6.py`. Every table that had been deposited before was reproduced with a maximum difference of zero, except `results_insilico_mixing.csv`: its four autophagy modules agree to within 0.01 in Cohen d and the CLEAR crossing is 6.58 percent against 6.62 percent, but its Hallmark rows, which the manuscript does not cite, differ, and the regenerated table replaces the earlier one. Six tables that the figure and adjustment scripts write had never been deposited and are now included, among them `results_cibersortx_per_gene.csv`, the source of Figure 1a (r = 0.841). The chromatin scripts were not re-run here, since they need the bigWig downloads, and `csi_metric.py` needs the licensed MSigDB collections.
 
 ## Pre-specification
 
@@ -89,6 +89,7 @@ It was written on 17 August 2026, before any dataset was opened, and is reproduc
 | `gene_level_csi.py` | Composition sensitivity index computed gene by gene |
 | `kegg_lysosome_decomposition.py` | KEGG_LYSOSOME index decomposed by gene and family |
 | `sensitivity_checks.py` | Enrichment exponent, TFEB inside CLEAR, and composition of the non-T pool |
+| `make_graphical_abstract.py` | Graphical abstract; reads every plotted number from the tables and writes them to `results/results_graphical_abstract_data.csv` |
 | `make_figures.py`, `make_fig6.py` | Figures 1, 2, 5, 6 and Figure 4 |
 | `build_ms.js` | Builds the manuscript document |
 
