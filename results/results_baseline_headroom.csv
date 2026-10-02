@@ -1,0 +1,5 @@
+contrast,baseline_column,nfkb_median_pct,clear_median_pct,elongation_median_pct,fusion_median_pct,initiation_median_pct
+H3K27ac Jurkat,CT_Jurkat_Empty_H3K27ac,65.8,60.3,79.3,67.1,72.3
+H3K27ac TL-Om1,CT_TL-Om1_Empty_H3K27ac,89.9,64.4,67.6,64.7,75.2
+ATAC empty,Empty,58.1,63.2,78.7,70.4,62.8
+ATAC IRF4,IRF4,58.3,58.1,76.7,67.3,68.6

@@ -1,0 +1,6 @@
+subset,n,spearman,P,mean_empty,mean_IRF4
+all promoters,18386,-0.0033,0.6587360913815482,0.0,-0.0
+top 500 Jurkat H3K27ac Tax gains,500,-0.0075,0.8664305237831776,0.069,-0.045
+NF-kB benchmark,16,0.0559,0.8371372217954723,0.202,-0.044
+"ATAC empty vs Jurkat H3K27ac, all promoters",18293,0.0706,1.19311663313324e-21,,
+"ATAC IRF4 vs Jurkat H3K27ac, all promoters",18293,-0.0014,0.8491098027851006,,

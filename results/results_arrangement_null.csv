@@ -1,0 +1,21 @@
+contrast,set,n_genes,scattered_null_sd,arrangement_null_sd,inflation,bound_fold_scattered,bound_fold_arrangement
+H3K27ac Jurkat,clear,13,0.206,0.20699,1.005,1.492,1.494
+H3K27ac Jurkat,elongation,15,0.19443,0.19283,0.992,1.458,1.454
+H3K27ac Jurkat,fusion,13,0.20969,0.20915,0.997,1.502,1.501
+H3K27ac Jurkat,initiation,12,0.21592,0.22204,1.028,1.521,1.539
+H3K27ac Jurkat,NF-kB benchmark,16,0.18845,0.18847,1.0,1.442,1.442
+H3K27ac TL-Om1,clear,13,0.1355,0.13564,1.001,1.301,1.301
+H3K27ac TL-Om1,elongation,15,0.12635,0.12631,1.0,1.278,1.278
+H3K27ac TL-Om1,fusion,13,0.13454,0.1356,1.008,1.298,1.301
+H3K27ac TL-Om1,initiation,12,0.14009,0.14144,1.01,1.312,1.316
+H3K27ac TL-Om1,NF-kB benchmark,16,0.12144,0.12165,1.002,1.266,1.266
+ATAC empty,clear,13,0.11726,0.11588,0.988,1.256,1.252
+ATAC empty,elongation,15,0.10858,0.10914,1.005,1.235,1.236
+ATAC empty,fusion,15,0.10945,0.11004,1.005,1.237,1.238
+ATAC empty,initiation,12,0.12168,0.12272,1.009,1.266,1.269
+ATAC empty,NF-kB benchmark,16,0.10507,0.10537,1.003,1.226,1.227
+ATAC IRF4,clear,13,0.15012,0.14862,0.99,1.338,1.334
+ATAC IRF4,elongation,15,0.13889,0.14046,1.011,1.309,1.313
+ATAC IRF4,fusion,13,0.14924,0.15015,1.006,1.336,1.338
+ATAC IRF4,initiation,12,0.15419,0.15691,1.018,1.349,1.356
+ATAC IRF4,NF-kB benchmark,16,0.13584,0.13495,0.993,1.302,1.299

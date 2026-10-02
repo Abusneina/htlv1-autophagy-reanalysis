@@ -1,0 +1,5 @@
+module,n_genes,same_chrom_pairs,pairs_within_1Mb,median_nn_Mb
+clear,13,3,0,41.93
+elongation,15,7,0,33.87
+fusion,15,1,0,1.31
+initiation,12,3,1,22.97

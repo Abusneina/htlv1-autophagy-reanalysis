@@ -1,0 +1,5 @@
+module,cohens_d,p,cohort,TFEB_vs_rest_spearman_GSE33615
+clear,1.1972732899780827,4.577011224551527e-05,GSE33615,0.135
+clear_without_TFEB,1.0977211653325811,0.00013327271458217323,GSE33615,0.135
+clear,,,GSE107011 mixtures: reaches d = 1.20 at 6.66% non-T,0.135
+clear_without_TFEB,,,GSE107011 mixtures: reaches d = 1.20 at 11.31% non-T,0.135
