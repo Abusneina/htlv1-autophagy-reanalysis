@@ -7,10 +7,10 @@ import gzip, numpy as np, pandas as pd
 from scipy import stats
 import statsmodels.api as sm
 
-exec(open('code/run_gse33615.py').read().split('# ---------- modules ----------')[0]
+exec(open('run_gse33615.py').read().split('# ---------- modules ----------')[0]
      .replace('print(', '_ = ('))
 
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mt.groupby('module') if m != 'axis'}
 grp = samples.set_index('gsm').loc[G.columns, 'group']
 is_atl = (grp == 'ATL').values
@@ -44,7 +44,7 @@ for m, genes in mods.items():
             (x[is_atl].var(ddof=1) + x[~is_atl].var(ddof=1)) / 2)
         rows.append([m, g, rho, d])
 P = pd.DataFrame(rows, columns=['module','gene','rho_monocyte','cohens_d_ATL'])
-P.to_csv('results_composition_per_gene.csv', index=False)
+P.to_csv('results/results_composition_per_gene.csv', index=False)
 for m in mods:
     s = P[P.module == m]
     r, p = stats.pearsonr(s.rho_monocyte, s.cohens_d_ATL)
@@ -53,7 +53,7 @@ r, p = stats.pearsonr(P.rho_monocyte, P.cohens_d_ATL)
 print(f'  ALL {len(P)} module genes: r={r:+.3f} (p={p:.3g})')
 
 print('\n=== module score, adjusted for lineage composition ===')
-S = pd.read_csv('results_module_scores.csv', index_col=0)
+S = pd.read_csv('results/results_module_scores.csv', index_col=0)
 for m in mods:
     y = S.loc[G.columns, m].values
     X = sm.add_constant(np.column_stack([is_atl.astype(float), Sc.values]))

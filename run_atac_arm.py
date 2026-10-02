@@ -5,7 +5,7 @@ PROMOTER = 1000                     # ATAC is sharper than H3K27ac; TSS +/- 1 kb
 rng = np.random.default_rng(20260817)
 
 reg = pd.read_csv('regions_hg38.tsv', sep='\t')
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mt.groupby('module')}
 axis = mods.pop('axis')
 
@@ -23,7 +23,7 @@ S = {}
 for f in sorted(glob.glob('atac/*.bw')):
     n = f.split('/')[-1].split('_ATAC_JPX-9_')[1].replace('.bw','')
     S[n] = quantify(f); print(f'  {n}: median {S[n].median():.3f}')
-S = pd.DataFrame(S); S.to_csv('results_atac_promoters.csv')
+S = pd.DataFrame(S); S.to_csv('results/results_atac_promoters.csv')
 
 def competitive(lfc, genes, n=20000):
     idx = [g for g in genes if g in lfc.index]
@@ -48,4 +48,4 @@ for base, tax, label in [('Empty','Empty_Tax','Tax on empty background'),
     for g in axis + ['RELB','NFKB2','BATF3','DUSP10','TFEB','TFE3','MAP1LC3B','SQSTM1','CTSD','LAMP1','BECN1']:
         if g in lfc.index:
             print(f'   {g:9s} log2FC={lfc[g]:+.2f}  pct={pct[g]:.3f}')
-    lfc.to_csv(f'results_atac_lfc_{tax}.csv')
+    lfc.to_csv(f'results/results_atac_lfc_{tax}.csv')

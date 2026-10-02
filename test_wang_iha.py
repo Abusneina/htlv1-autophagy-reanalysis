@@ -6,10 +6,10 @@ from scipy import stats
 import statsmodels.api as sm
 
 D = json.load(open('wang_iha_degs.json'))
-exec(open('code/run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(','_p=('))
+exec(open('run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(','_p=('))
 grp = samples.set_index('gsm').loc[G.columns,'group']; is_atl=(grp=='ATL').values
 
-C = pd.read_csv('/mnt/user-data/uploads/CIBERSORTx_Job2_Results.csv').set_index('Mixture')
+C = pd.read_csv('results/CIBERSORTx_LM22_fractions_GSE33615.csv').set_index('Mixture')
 F = C.drop(columns=['P-value','Correlation','RMSE']).loc[G.columns]
 mono = F['Monocytes'].values
 _e = [g for g in ['HBB','HBA1','HBA2','ALAS2','SLC4A1','AHSP'] if g in G.index]
@@ -83,6 +83,6 @@ def survive_ery(name, genes):
 print()
 Ef=survive_ery('Ferroptosis DEGs', D['ferroptosis'])
 Ea=survive_ery('Autophagy DEGs',  D['autophagy'])
-Ef.to_csv('results_wangiha_ferroptosis.csv',index=False); Ea.to_csv('results_wangiha_autophagy.csv',index=False)
+Ef.to_csv('results/results_wangiha_ferroptosis.csv',index=False); Ea.to_csv('results/results_wangiha_autophagy.csv',index=False)
 print('\ngenes losing significance (autophagy):', list(Ea[(Ea.q_unadj<0.05)&(Ea.q_adj_ery_mono>=0.05)].gene))
 print('genes losing significance (ferroptosis):', list(Ef[(Ef.q_unadj<0.05)&(Ef.q_adj_ery_mono>=0.05)].gene))

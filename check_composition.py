@@ -1,7 +1,7 @@
 import pandas as pd, numpy as np
 from scipy import stats
-S = pd.read_csv('results_module_scores.csv', index_col=0)
-exec(open('code/run_gse33615.py').read().split("# ---------- modules ----------")[0].replace("print(","_p=(" ))
+S = pd.read_csv('results/results_module_scores.csv', index_col=0)
+exec(open('run_gse33615.py').read().split("# ---------- modules ----------")[0].replace("print(","_p=(" ))
 mono = ['CD14','LYZ','CSF1R','FCN1','S100A8','S100A9','VCAN','ITGAM']
 tcell = ['CD3D','CD3E','CD2','IL7R','LCK']
 prol = ['MKI67','TOP2A','CCNB1','PCNA']

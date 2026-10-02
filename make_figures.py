@@ -7,7 +7,7 @@ plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8,'axes.linewidth':
 NPG = ['#E64B35','#4DBBD5','#00A087','#3C5488','#F39B7F','#8491B4','#91D1C2','#DC0000']
 
 # ---------------- Figure 1: composition confounding in GSE33615 ----------------
-P = pd.read_csv('results_cibersortx_per_gene.csv').rename(
+P = pd.read_csv('results/results_cibersortx_per_gene.csv').rename(
         columns={'rho_monocyte_LM22':'rho_monocyte','cohens_d':'cohens_d_ATL'})
 fig, ax = plt.subplots(1, 2, figsize=(7.2, 3.1))
 mods = ['initiation','elongation','fusion','clear']
@@ -26,7 +26,7 @@ ax[0].text(0.04, 0.95, f'$r$ = {r:+.3f}\n$P$ = {p:.1e}\n$n$ = {len(P)} genes',
            transform=ax[0].transAxes, va='top', fontsize=7.5)
 ax[0].legend(frameon=False, fontsize=7, loc='lower right')
 
-R = pd.read_csv('results_cibersortx_groups.csv')
+R = pd.read_csv('results/results_cibersortx_groups.csv')
 R = R[R.q < 0.05].sort_values('cohens_d')
 y = np.arange(len(R))
 ax[1].barh(y-0.19, R.mean_ATL*100, height=0.36, color=NPG[0], label='ATL (PBMC)')
@@ -43,7 +43,7 @@ plt.tight_layout(); plt.savefig('fig/Figure1.png', bbox_inches='tight'); plt.clo
 
 # ---------------- Figure 2: the two cohorts disagree ----------------
 fig, ax = plt.subplots(1, 3, figsize=(7.5, 3.0))
-d33 = pd.read_csv('results_modules.csv')
+d33 = pd.read_csv('results/results_modules.csv')
 order = ['initiation','elongation','fusion','clear']
 d33 = d33.set_index('module').loc[order]
 cols = [NPG[i] for i in range(4)]
@@ -58,7 +58,7 @@ ax[0].set_ylim(ylo*1.30 if ylo < 0 else -0.1, yhi*1.62)
 ax[0].text(0.03, 0.97, 'GSE33615\nPBMC vs sorted CD4+', transform=ax[0].transAxes,
            ha='left', va='top', fontsize=7.5)
 
-S55 = pd.read_csv('results_gse55851_scores.csv', index_col=0)
+S55 = pd.read_csv('results/results_gse55851_scores.csv', index_col=0)
 atlN = S55[(S55['class']=='ATL') & (S55.fraction=='N')]
 norm = S55[S55['class']=='Normal']
 diff = [atlN[m].mean() - norm[m].mean() for m in order]
@@ -88,7 +88,7 @@ for a, l in zip(ax, ['a','b','c']):
 plt.tight_layout(); plt.savefig('fig/Figure2.png', bbox_inches='tight'); plt.close()
 
 # ---------------- Figure 3: chromatin arms with detection bounds ----------------
-pw = pd.read_csv('results_power_analysis.csv')
+pw = pd.read_csv('results/results_power_analysis.csv')
 arms = ['H3K27ac Jurkat Tax','H3K27ac TL-Om1 Tax','ATAC Tax (empty bg)','ATAC Tax (IRF4 bg)']
 fig, ax = plt.subplots(figsize=(7.0, 3.1))
 w = 0.19
@@ -111,11 +111,11 @@ ax.set_ylim(-0.78, 0.80)
 plt.tight_layout(); plt.savefig('fig/Figure3.png', bbox_inches='tight'); plt.close()
 
 # ---------------- Figure 4: benchmark, the test detects a real Tax effect ----------------
-h = pd.read_csv('results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv', index_col=0).iloc[:,0]
+h = pd.read_csv('results/results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv', index_col=0).iloc[:,0]
 nfkb = ['RELB','NFKB2','NFKB1','RELA','REL','NFKBIA','TNFAIP3','BIRC3','CD40','ICAM1',
         'TRAF1','CCL5','IL2RA','TNFRSF8','CFLAR','BCL2A1','PLEK','LTA']
 nfkb = [g for g in nfkb if g in h.index]
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 sets = {'NF-$\\kappa$B response': nfkb}
 for m in order:
     sets[m] = [g for g in mt[mt.module == m].gene if g in h.index]

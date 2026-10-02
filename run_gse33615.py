@@ -12,9 +12,9 @@ FDR = 0.05
 MIN_COVERAGE = 0.60
 RNG = np.random.default_rng(20260817)
 
-SM = '/mnt/user-data/uploads/GSE33615_series_matrix_txt.gz'
-SOFT = '/mnt/user-data/uploads/GSE33615_family_soft.gz'
-MODS = '/home/claude/htlv/code/modules_frozen_v1.tsv'
+SM = 'GSE33615_series_matrix.txt.gz'
+SOFT = 'GSE33615_family.soft.gz'
+MODS = 'modules_frozen_v1.tsv'
 
 # ---------- sample metadata ----------
 meta = {}
@@ -189,7 +189,7 @@ if all(g in G.index for g in ['EP300', 'SIRT1']):
         r, p = stats.spearmanr(S.loc[m], ratio)
         print(f'  {m:11s} rho={r:+.3f}  p={p:.3g}')
 
-S.T.join(samples.set_index('gsm')).to_csv('/home/claude/htlv/results_module_scores.csv')
-res.to_csv('/home/claude/htlv/results_modules.csv', index=False)
-ax.to_csv('/home/claude/htlv/results_axis.csv', index=False)
-samples.to_csv('/home/claude/htlv/results_sample_assignment.csv', index=False)
+S.T.join(samples.set_index('gsm')).to_csv('results/results_module_scores.csv')
+res.to_csv('results/results_modules.csv', index=False)
+ax.to_csv('results/results_axis.csv', index=False)
+samples.to_csv('results/results_sample_assignment.csv', index=False)

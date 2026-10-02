@@ -6,9 +6,9 @@ import numpy as np, pandas as pd
 from scipy import stats
 import statsmodels.api as sm
 
-exec(open('code/run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(', '_p=('))
+exec(open('run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(', '_p=('))
 
-sig = pd.read_csv('code/mcpcounter_signatures.txt', sep='\t')
+sig = pd.read_csv('mcpcounter_signatures.txt', sep='\t')
 sig.columns = [c.strip('"') for c in sig.columns]
 sig = sig.rename(columns={'HUGO symbols': 'gene', 'Cell population': 'pop'})
 sig['gene'] = sig['gene'].str.strip('"'); sig['pop'] = sig['pop'].str.strip('"')
@@ -39,11 +39,11 @@ R['q'] = stats.false_discovery_control(R['p'])
 R = R.sort_values('q')
 print('\n== population abundance, ATL PBMC vs sorted CD4+ controls ==')
 print(R.to_string(index=False, float_format=lambda x: f'{x:.3g}'))
-R.to_csv('results_mcpcounter_groups.csv', index=False)
-E.to_csv('results_mcpcounter_estimates.csv')
+R.to_csv('results/results_mcpcounter_groups.csv', index=False)
+E.to_csv('results/results_mcpcounter_estimates.csv')
 
 # module effect before and after adjusting for composition principal components
-S = pd.read_csv('results_module_scores.csv', index_col=0)
+S = pd.read_csv('results/results_module_scores.csv', index_col=0)
 Z = (E - E.mean()) / E.std()
 u, s, vt = np.linalg.svd(Z.values - Z.values.mean(0), full_matrices=False)
 var = s**2 / (s**2).sum()
@@ -60,12 +60,12 @@ for m in ['initiation', 'elongation', 'fusion', 'clear']:
 O = pd.DataFrame(out, columns=['module', 'beta_unadj', 'p_unadj', 'beta_adj_PC', 'p_adj_PC'])
 print('\n== module effect, unadjusted vs adjusted for composition PCs ==')
 print(O.to_string(index=False, float_format=lambda x: f'{x:.4g}'))
-O.to_csv('results_module_adjusted_mcp.csv', index=False)
+O.to_csv('results/results_module_adjusted_mcp.csv', index=False)
 
 # does each module gene's association with monocyte abundance predict its ATL effect?
 mono = E['Monocytic lineage'] if 'Monocytic lineage' in E.columns else None
 if mono is not None:
-    mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+    mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
     rows = []
     for _, r in mt[mt.module != 'axis'].iterrows():
         if r.gene not in G.index: continue
@@ -77,4 +77,4 @@ if mono is not None:
     P = pd.DataFrame(rows, columns=['module', 'gene', 'rho_mono_MCP', 'cohens_d'])
     r, p = stats.pearsonr(P.rho_mono_MCP, P.cohens_d)
     print(f'\nMCP monocytic abundance vs apparent ATL effect, {len(P)} genes: r={r:+.3f} p={p:.3g}')
-    P.to_csv('results_mcp_per_gene.csv', index=False)
+    P.to_csv('results/results_mcp_per_gene.csv', index=False)

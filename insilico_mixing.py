@@ -6,9 +6,9 @@ from scipy import stats
 rng = np.random.default_rng(20260817)
 
 # ---- reference expression, mapped to symbols ----
-d = pd.read_csv('/mnt/user-data/uploads/GSE107011_Processed_data_TPM_txt.gz', sep='\t', index_col=0)
+d = pd.read_csv('GSE107011_Processed_data_TPM.txt.gz', sep='\t', index_col=0)
 d.index = [i.split('.')[0] for i in d.index]
-ann = pyreadr.read_r('/tmp/grch38.rda')['grch38'][['ensgene','symbol']].dropna().drop_duplicates('ensgene')
+ann = pyreadr.read_r('grch38.rda')['grch38'][['ensgene','symbol']].dropna().drop_duplicates('ensgene')
 sym = ann.set_index('ensgene')['symbol']
 g = sym.reindex(d.index)
 d = d[g.notna().values]; d.index = g.dropna().values
@@ -27,9 +27,9 @@ NEUT  = pool(['Neutrophils'])
 print('pools built (CD4, monocyte, B, NK, neutrophil)')
 
 # ---- modules and Hallmark sets ----
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 sets = {m: [x for x in set(v['gene']) if x in d.index] for m, v in mt.groupby('module') if m != 'axis'}
-for line in open('code/h.all.v7.0.symbols.gmt'):
+for line in open('h.all.v7.0.symbols.gmt'):
     p=line.rstrip('\n').split('\t')
     gs=[x for x in p[2:] if x in d.index]
     if len(gs)>=15: sets[p[0].replace('HALLMARK_','')]=gs
@@ -85,7 +85,7 @@ R['q']=np.nan
 for f in [x for x in FRACTIONS if x>0]:
     m=R.frac==f
     R.loc[m,'q']=stats.false_discovery_control(R.loc[m,'p'])
-R.to_csv('results_insilico_mixing.csv',index=False)
+R.to_csv('results/results_insilico_mixing.csv',index=False)
 
 print('\n== magnitude of the artefactual difference, by contamination level ==')
 print('   (four donors, so the paired test cannot reach P<0.05; effect sizes are the readout)')
@@ -123,4 +123,4 @@ print('\nmost contamination-sensitive Hallmark sets at 10% non-T content:')
 print(slope.tail(8).round(2).to_string())
 print('\nleast affected:')
 print(slope.abs().sort_values().head(8).round(2).to_string())
-R.to_csv('results_insilico_mixing.csv',index=False)
+R.to_csv('results/results_insilico_mixing.csv',index=False)

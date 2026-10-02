@@ -7,7 +7,7 @@ PROMOTER = 2000          # +/- bp around TSS, fixed before analysis
 rng = np.random.default_rng(20260817)
 
 reg = pd.read_csv('regions_hg38.tsv', sep='\t')
-mods_tbl = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mods_tbl = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mods_tbl.groupby('module')}
 axis = mods.pop('axis')
 
@@ -34,7 +34,7 @@ for f in files:
     sig[name] = quantify(f)
     print(f'  quantified {name}: {len(sig[name])} promoters, median {sig[name].median():.3f}')
 S = pd.DataFrame(sig)
-S.to_csv('results_h3k27ac_promoters.csv')
+S.to_csv('results/results_h3k27ac_promoters.csv')
 
 def competitive(lfc, genes, n=20000):
     idx = [g for g in genes if g in lfc.index]
@@ -76,4 +76,4 @@ for empty, tax in pairs:
     for g in axis + ['RELB','NFKB2','BATF3','SQSTM1','MAP1LC3B','TFEB','CTSD','BECN1','LAMP1']:
         if g in lfc.index:
             print(f'   {g:9s} log2FC={lfc[g]:+.2f}')
-    lfc.to_csv(f'results_h3k27ac_lfc_{tax}.csv')
+    lfc.to_csv(f'results/results_h3k27ac_lfc_{tax}.csv')

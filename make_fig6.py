@@ -2,8 +2,8 @@ import numpy as np, pandas as pd, matplotlib
 matplotlib.use('Agg'); import matplotlib.pyplot as plt
 plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8,'axes.linewidth':0.8,'savefig.dpi':300})
 NPG=['#E64B35','#4DBBD5','#00A087','#3C5488','#F39B7F','#8491B4','#91D1C2','#8A5A00']
-R=pd.read_csv('results_insilico_mixing.csv')
-C=pd.read_csv('results_CSI_index.csv')
+R=pd.read_csv('results/results_insilico_mixing.csv')
+C=pd.read_csv('results/results_CSI_index.csv')
 
 fig,ax=plt.subplots(1,3,figsize=(7.5,3.0))
 

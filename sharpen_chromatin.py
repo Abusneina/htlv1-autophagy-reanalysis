@@ -8,18 +8,18 @@ import numpy as np, pandas as pd, pyBigWig
 from scipy import stats
 rng = np.random.default_rng(20260817)
 
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mt.groupby('module') if m != 'axis'}
 NFKB = ['RELB','NFKB2','NFKB1','RELA','REL','NFKBIA','TNFAIP3','BIRC3','CD40','ICAM1',
         'TRAF1','CCL5','IL2RA','TNFRSF8','CFLAR','BCL2A1','PLEK','LTA']
 
-CON = {'H3K27ac Jurkat': ('results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv',
+CON = {'H3K27ac Jurkat': ('results/results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv',
                           'bw2/GSM9453007_CT_Jurkat_Empty_H3K27ac.bw', 2000),
-       'H3K27ac TL-Om1': ('results_h3k27ac_lfc_CT_TL-Om1_Tax_H3K27ac.csv',
+       'H3K27ac TL-Om1': ('results/results_h3k27ac_lfc_CT_TL-Om1_Tax_H3K27ac.csv',
                           'bw2/GSM9453009_CT_TL-Om1_Empty_H3K27ac.bw', 2000),
-       'ATAC empty':     ('results_atac_lfc_Empty_Tax.csv',
+       'ATAC empty':     ('results/results_atac_lfc_Empty_Tax.csv',
                           'atac/GSM9453003_ATAC_JPX-9_Empty.bw', 1000),
-       'ATAC IRF4':      ('results_atac_lfc_IRF4_Tax.csv',
+       'ATAC IRF4':      ('results/results_atac_lfc_IRF4_Tax.csv',
                           'atac/GSM9453004_ATAC_JPX-9_IRF4.bw', 1000)}
 reg = pd.read_csv('regions_hg38.tsv', sep='\t')
 
@@ -70,7 +70,7 @@ for name,(f,bwf,win) in CON.items():
         print(f'   {m:16s} mean={obs:+.3f}  95% CI [{lo:+.3f}, {hi:+.3f}]  z={z:+.2f}  p_matched={p:.4f}  (n={k})')
         rows.append([name,m,obs,lo,hi,z,p])
 R=pd.DataFrame(rows,columns=['contrast','set','mean_log2','ci_lo','ci_hi','z_matched','p_matched'])
-R.to_csv('results_chromatin_matched.csv',index=False)
+R.to_csv('results/results_chromatin_matched.csv',index=False)
 
 print('\n== combination across the four independent Tax contrasts ==')
 for m in list(mods)+['NF-kB benchmark']:

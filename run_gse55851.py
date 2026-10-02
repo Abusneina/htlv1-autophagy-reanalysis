@@ -1,7 +1,7 @@
 import gzip, numpy as np, pandas as pd
 from scipy import stats
-SM='/mnt/user-data/uploads/GSE55851_series_matrix_txt.gz'
-SOFT='/mnt/user-data/uploads/GSE55851_family_soft.gz'
+SM='GSE55851_series_matrix.txt.gz'
+SOFT='GSE55851_family.soft.gz'
 MIN_COVERAGE=0.60; FDR=0.05
 
 meta={}
@@ -45,7 +45,7 @@ o=X.mean(axis=1).sort_values(ascending=False).index; X,sym=X.loc[o],sym.loc[o]
 d=~sym.duplicated(); G=X[d]; G.index=sym[d]
 print(f'gene matrix: {G.shape}')
 
-mt=pd.read_csv('code/modules_frozen_v1.tsv',sep='\t')
+mt=pd.read_csv('modules_frozen_v1.tsv',sep='\t')
 mods={m:sorted(set(g['gene'])) for m,g in mt.groupby('module')}
 axis=mods.pop('axis')
 print('coverage:', {m:round(len([g for g in gs if g in G.index])/len(gs),2) for m,gs in list(mods.items())+[('axis',axis)]})
@@ -88,4 +88,4 @@ for g in ['SIRT1','EP300','CREBBP']:
     if g in G.index:
         dif=[G.loc[g,f'{p}-N']-G.loc[g,f'{p}-P'] for p in pairs]
         print(f'  {g:11s} mean paired log2FC={np.mean(dif):+.2f}  ' + '  '.join(f'{p}:{d:+.2f}' for p,d in zip(pairs,dif)))
-S.T.join(sm.set_index('title')).to_csv('results_gse55851_scores.csv')
+S.T.join(sm.set_index('title')).to_csv('results/results_gse55851_scores.csv')

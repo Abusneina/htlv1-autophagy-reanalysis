@@ -1,10 +1,10 @@
 import numpy as np, pandas as pd, pyreadr
 from scipy import stats
 
-ann = pyreadr.read_r('/tmp/grch38.rda')['grch38'][['ensgene','symbol']].dropna().drop_duplicates('ensgene')
+ann = pyreadr.read_r('grch38.rda')['grch38'][['ensgene','symbol']].dropna().drop_duplicates('ensgene')
 sym = ann.set_index('ensgene')['symbol']
 
-C = pd.read_csv('/mnt/user-data/uploads/GSE316417_RNA-seq_raw_counts_all_samples_txt.gz', sep='\t', index_col=0)
+C = pd.read_csv('GSE316417_RNA-seq_raw_counts_all_samples.txt.gz', sep='\t', index_col=0)
 C.columns = [c.replace('_count','') for c in C.columns]
 C = C[C.sum(axis=1) > 0]
 cpm = C / C.sum() * 1e6
@@ -17,7 +17,7 @@ L.index = g.values
 L = L.groupby(level=0).max()
 print(f'expressed genes with a symbol: {L.shape[0]}  samples: {L.shape[1]}')
 
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mt.groupby('module')}
 axis = mods.pop('axis')
 print('coverage:', {m: round(len([x for x in gs if x in L.index])/len(gs), 2)

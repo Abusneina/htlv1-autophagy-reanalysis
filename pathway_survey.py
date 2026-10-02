@@ -1,14 +1,15 @@
 """Which pathway signatures in GSE33615 are driven by specimen composition?
 Every Hallmark gene set is scored, tested for ATL versus control, then re-tested
 with LM22 composition principal components as covariates."""
+import os
 import numpy as np, pandas as pd
 from scipy import stats
 import statsmodels.api as sm
 
-exec(open('code/run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(','_p=('))
+exec(open('run_gse33615.py').read().split('# ---------- modules ----------')[0].replace('print(','_p=('))
 grp = samples.set_index('gsm').loc[G.columns,'group']; is_atl=(grp=='ATL').values
 
-C=pd.read_csv('/mnt/user-data/uploads/CIBERSORTx_Job2_Results.csv').set_index('Mixture')
+C=pd.read_csv('results/CIBERSORTx_LM22_fractions_GSE33615.csv').set_index('Mixture')
 F=C.drop(columns=['P-value','Correlation','RMSE']).loc[G.columns]
 mono=F['Monocytes'].values
 _e=[g for g in ['HBB','HBA1','HBA2','ALAS2','SLC4A1','AHSP'] if g in G.index]
@@ -19,7 +20,7 @@ u_,s_,vt_=np.linalg.svd(Z.values-Z.values.mean(0),full_matrices=False)
 PC=u_[:,:11]*s_[:11]
 
 sets={}
-for line in open('code/h.all.v7.0.symbols.gmt'):
+for line in open('h.all.v7.0.symbols.gmt'):
     p=line.rstrip('\n').split('\t'); sets[p[0].replace('HALLMARK_','')]=[g for g in p[2:] if g in G.index]
 sets={k:v for k,v in sets.items() if len(v)>=15}
 print(f'{len(sets)} Hallmark sets with at least 15 genes on this array')
@@ -56,7 +57,7 @@ lost=sig[stats.false_discovery_control(sig.p_adj_LM22)>=0.05]
 print(f'\nHallmark sets significant before adjustment: {len(sig)}/{len(R)}')
 print(f'losing significance after composition adjustment: {len(lost)}/{len(sig)} ({100*len(lost)/len(sig):.0f}%)')
 R=R.sort_values('frac_ery_linked',ascending=False)
-R.to_csv('results_pathway_survey.csv',index=False)
+R.to_csv('results/results_pathway_survey.csv',index=False)
 print('\nmost composition-linked pathways (fraction of genes tracking erythroid content):')
 print(R.head(12)[['pathway','n_genes','frac_ery_linked','frac_mono_linked','q_unadj','q_adj_LM22']].to_string(index=False,float_format=lambda x:f'{x:.3g}'))
 print('\nleast composition-linked:')
@@ -90,5 +91,6 @@ ax[1].axhline(-np.log10(0.05),color='0.4',lw=0.8); ax[1].axvline(-np.log10(0.05)
 ax[1].set_xlabel('$-\\log_{10}q$ unadjusted'); ax[1].set_ylabel('$-\\log_{10}q$ after composition adjustment')
 ax[1].text(0.97,0.04,f'{sum(lost)} sets lose\nsignificance',transform=ax[1].transAxes,va='bottom',ha='right',fontsize=6.8,color=NPG[4])
 for a,l in zip(ax,['a','b']): a.text(-0.12,1.02,l,transform=a.transAxes,fontweight='bold',fontsize=10)
+os.makedirs('fig', exist_ok=True)
 plt.tight_layout(); plt.savefig('fig/FigureS1.png',bbox_inches='tight'); plt.close()
 print('Supplementary Figure S1 written')

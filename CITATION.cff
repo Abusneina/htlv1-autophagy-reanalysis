@@ -9,4 +9,5 @@ authors:
     affiliation: "Faculty of Biomedical Sciences, University of Benghazi"
 repository-code: "https://github.com/Abusneina/htlv1-autophagy-reanalysis"
 license: MIT
-doi: "10.5281/zenodo.22235482"
+doi: "10.5281/zenodo.22235481"
+version: "1.4"

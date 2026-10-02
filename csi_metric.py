@@ -7,7 +7,7 @@ percent. Mixtures are built per donor from purified populations, so between-samp
 variation is real donor variation. CSI is positive when contamination inflates a
 set's score.
 
-Null model. For each set size, 300 random gene sets of the same size are drawn
+Null model. For each set size, 120 random gene sets of the same size are drawn
 from the expressed transcriptome and their CSI computed. Each set's z score and
 percentile are reported against that size-matched null, so the index is not a
 function of set size.
@@ -18,9 +18,9 @@ import glob
 import numpy as np, pandas as pd, pyreadr
 rng = np.random.default_rng(20260817)
 
-d = pd.read_csv('/mnt/user-data/uploads/GSE107011_Processed_data_TPM_txt.gz', sep='\t', index_col=0)
+d = pd.read_csv('GSE107011_Processed_data_TPM.txt.gz', sep='\t', index_col=0)
 d.index = [i.split('.')[0] for i in d.index]
-ann = pyreadr.read_r('/tmp/grch38.rda')['grch38'][['ensgene', 'symbol']].dropna().drop_duplicates('ensgene')
+ann = pyreadr.read_r('grch38.rda')['grch38'][['ensgene', 'symbol']].dropna().drop_duplicates('ensgene')
 g = ann.set_index('ensgene')['symbol'].reindex(d.index)
 d = d[g.notna().values]; d.index = g.dropna().values
 d = d.groupby(level=0).max()
@@ -99,7 +99,7 @@ def csi(sc):
     return np.polyfit(xs, ys, 1)[0] / 10
 
 sets = {}
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 for m, v in mt.groupby('module'):
     if m != 'axis':
         gs = [x for x in set(v['gene']) if x in X.index]
@@ -107,7 +107,7 @@ for m, v in mt.groupby('module'):
             sets['MODULE_' + m.upper()] = gs
 COLLECTION={'h.all.v7.0.symbols.gmt':'Hallmark','kegg.gmt':'KEGG','kegg_medicus.gmt':'KEGG_MEDICUS','reactome.gmt':'Reactome'}
 origin={}
-for path in sorted(glob.glob('code/*.gmt')):
+for path in sorted(glob.glob('*.gmt')):
     for line in open(path):
         p = line.rstrip('\n').split('\t')
         gs = [x for x in p[2:] if x in X.index]
@@ -142,7 +142,7 @@ def zp(row):
 res = pd.concat([res, res.apply(zp, axis=1)], axis=1)
 res['risk'] = np.where(res.z.abs() > 3, 'high', np.where(res.z.abs() > 2, 'caution', 'robust'))
 res = res.sort_values('CSI', ascending=False)
-res.to_csv('results_CSI_index.csv', index=False)
+res.to_csv('results/results_CSI_index.csv', index=False)
 
 print('\nby collection:'); print(res.groupby('collection').risk.value_counts().unstack(fill_value=0).to_string())
 print('\n== Composition Sensitivity Index, most sensitive ==')

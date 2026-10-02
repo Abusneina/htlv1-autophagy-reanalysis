@@ -36,3 +36,11 @@ and place them in the repository root before running `csi_metric.py`, which read
 every `.gmt` file it finds there. The published index values for all 1,635 sets,
 which contain set names and statistics but no gene memberships, are in
 `results/results_CSI_index.csv`.
+
+## Added in release 1.4
+
+Three further inputs are used by the release 1.4 scripts. None is redistributed except where stated.
+
+- **annotables `grch38` table** (`grch38.rda`), from https://github.com/stephenturner/annotables. Used by `build_regions.py` and `gene_level_csi.py`. Not redistributed. `regions_hg38.tsv`, which lists gene coordinates derived from it, is included.
+- **GSE107011 processed TPM matrix** (`GSE107011_Processed_data_TPM.txt.gz`), from the Gene Expression Omnibus. Used by `gene_level_csi.py` and `kegg_lysosome_decomposition.py`. Not redistributed.
+- **MSigDB KEGG legacy symbols file** (for example `c2.cp.kegg_legacy.v2026.1.Hs.symbols.gmt`). Used by `kegg_lysosome_decomposition.py`. Not redistributed, for the licensing reason given above. The release 1.4 tables derived from it (`results/results_kegg_lysosome_decomposition.csv` and `results/results_kegg_lysosome_families.csv`) contain gene symbols and statistics for one set and are included.

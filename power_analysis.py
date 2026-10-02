@@ -6,14 +6,14 @@ approximation is checked against the permutation null before use."""
 import numpy as np, pandas as pd
 rng = np.random.default_rng(20260817)
 
-mt = pd.read_csv('code/modules_frozen_v1.tsv', sep='\t')
+mt = pd.read_csv('modules_frozen_v1.tsv', sep='\t')
 mods = {m: sorted(set(x['gene'])) for m, x in mt.groupby('module') if m != 'axis'}
 
 ARMS = {
- 'H3K27ac Jurkat Tax':   'results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv',
- 'H3K27ac TL-Om1 Tax':   'results_h3k27ac_lfc_CT_TL-Om1_Tax_H3K27ac.csv',
- 'ATAC Tax (empty bg)':  'results_atac_lfc_Empty_Tax.csv',
- 'ATAC Tax (IRF4 bg)':   'results_atac_lfc_IRF4_Tax.csv',
+ 'H3K27ac Jurkat Tax':   'results/results_h3k27ac_lfc_CT_Jurkat_Tax_H3K27ac.csv',
+ 'H3K27ac TL-Om1 Tax':   'results/results_h3k27ac_lfc_CT_TL-Om1_Tax_H3K27ac.csv',
+ 'ATAC Tax (empty bg)':  'results/results_atac_lfc_Empty_Tax.csv',
+ 'ATAC Tax (IRF4 bg)':   'results/results_atac_lfc_IRF4_Tax.csv',
 }
 
 # validate the normal approximation once
@@ -37,7 +37,7 @@ for arm, path in ARMS.items():
 R = pd.DataFrame(rows, columns=['arm','module','n_genes','genome_sd',
                                 'MDE_log2_80pct','observed','obs_over_MDE'])
 print(R.to_string(index=False))
-R.to_csv('results_power_analysis.csv', index=False)
+R.to_csv('results/results_power_analysis.csv', index=False)
 
 print('\nInterpretation aid: fold-change equivalent of each MDE')
 for arm in ARMS:
