@@ -2,6 +2,12 @@ nonT_pool,set,d_at_2pct,d_at_5pct,d_at_10pct,d_at_15pct,d_at_20pct,d_at_30pct,pc
 "published (monocytes 55%, B 25%, NK 12%, neutrophils 8%)",clear,0.382,0.92,1.765,2.537,3.292,4.637,6.66
 "published (monocytes 55%, B 25%, NK 12%, neutrophils 8%)",initiation,-0.09,-0.19,-0.299,-0.319,-0.299,-0.195,
 "published (monocytes 55%, B 25%, NK 12%, neutrophils 8%)",clear_without_TFEB,0.223,0.54,1.068,1.572,2.079,3.018,11.31
+"monocyte share 40% (B, NK, neutrophils rebalanced)",clear,0.325,0.789,1.492,2.135,2.782,3.995,7.92
+"monocyte share 40% (B, NK, neutrophils rebalanced)",initiation,-0.089,-0.194,-0.325,-0.343,-0.347,-0.265,
+"monocyte share 40% (B, NK, neutrophils rebalanced)",clear_without_TFEB,0.164,0.408,0.798,1.182,1.589,2.378,15.22
+"monocyte share 70% (B, NK, neutrophils rebalanced)",clear,0.436,1.062,2.026,2.922,3.768,5.27,5.72
+"monocyte share 70% (B, NK, neutrophils rebalanced)",initiation,-0.086,-0.188,-0.263,-0.266,-0.226,-0.075,
+"monocyte share 70% (B, NK, neutrophils rebalanced)",clear_without_TFEB,0.278,0.681,1.323,1.941,2.535,3.62,9.05
 monocytes only,clear,0.551,1.338,2.545,3.637,4.637,6.4,4.47
 monocytes only,initiation,-0.082,-0.155,-0.158,-0.105,0.003,0.285,
 monocytes only,clear_without_TFEB,0.395,0.953,1.823,2.622,3.365,4.683,6.42

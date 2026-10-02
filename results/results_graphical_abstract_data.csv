@@ -1,0 +1,62 @@
+panel,quantity,value
+panel 1,"Monocytes, sorted CD4+ controls (%)",6.20756659159752
+panel 1,"Monocytes, ATL blood (%)",16.47571275913518
+panel 1,"CD8 T cells, sorted CD4+ controls (%)",1.00259257571316
+panel 1,"CD8 T cells, ATL blood (%)",8.30091772264246
+panel 2,ULK1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.177098; 0.056652
+panel 2,ULK2 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.176324; 0.574652
+panel 2,RB1CC1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.107276; -0.426134
+panel 2,BECN1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.012002; 0.519246
+panel 2,PIK3C3 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.436166; -1.537415
+panel 2,PIK3R4 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.305260; -0.444963
+panel 2,NRBF2 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.141631; -0.465100
+panel 2,AMBRA1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.596763; -1.964985
+panel 2,SH3GLB1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.204910; 0.491459
+panel 2,ATG3 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.001419; 0.011104
+panel 2,ATG4B (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.051462; 0.146252
+panel 2,ATG5 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.146567; -0.142534
+panel 2,ATG7 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.154202; 0.943099
+panel 2,ATG10 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.297994; 0.728861
+panel 2,ATG12 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.004967; -0.220353
+panel 2,ATG16L1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.163491; -0.296688
+panel 2,MAP1LC3A (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.372455; 1.480395
+panel 2,MAP1LC3B (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.099809; 0.425400
+panel 2,GABARAP (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.557108; 0.774950
+panel 2,GABARAPL1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.160251; -2.175043
+panel 2,GABARAPL2 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.099917; 0.629032
+panel 2,ATG9A (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.138268; -0.269065
+panel 2,WIPI1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.423781; -0.231428
+panel 2,WIPI2 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.031548; -0.390734
+panel 2,STX17 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.470882; -1.650479
+panel 2,SNAP29 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.236151; 1.078280
+panel 2,VAMP8 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.458387; 1.675391
+panel 2,VAMP7 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.164585; -0.399714
+panel 2,RAB7A (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.171296; -0.912021
+panel 2,PLEKHM1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.271597; -1.313218
+panel 2,VPS33A (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.032673; 0.187086
+panel 2,VPS16 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.316858; 2.218194
+panel 2,VPS11 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.416670; -1.370899
+panel 2,VPS18 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.321681; 0.763562
+panel 2,VPS39 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.527397; -1.249438
+panel 2,VPS41 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.189097; 0.437379
+panel 2,LAMP1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.175546; 0.209684
+panel 2,LAMP2 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.173193; 0.217292
+panel 2,TFEB (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.290728; 0.415164
+panel 2,TFE3 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.237443; 0.425669
+panel 2,CTSB (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.476922; 1.344308
+panel 2,CTSD (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.557695; 0.477706
+panel 2,CTSF (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.126836; -0.528873
+panel 2,GBA (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.022384; 0.635279
+panel 2,HEXA (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.332346; 1.474930
+panel 2,MCOLN1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.581729; 1.114003
+panel 2,ATP6V1H (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.127068; 0.739365
+panel 2,ATP6V0E1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.050954; 0.292824
+panel 2,ATP6V1A (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),0.221124; 0.676438
+panel 2,SQSTM1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.270889; -1.409419
+panel 2,NBR1 (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control),-0.220632; -0.051749
+panel 2,Pearson r across the points,0.8406611701278209
+panel 3,"NF-κB control: observed effect / detection bound, Jurkat H3K27ac",2.4706254147592412
+panel 3,"CLEAR: observed effect / detection bound, Jurkat H3K27ac",0.37392795883361923
+panel 3,"initiation: observed effect / detection bound, Jurkat H3K27ac",0.35584843492586493
+panel 3,"fusion: observed effect / detection bound, Jurkat H3K27ac",0.2761578044596913
+panel 3,"elongation: observed effect / detection bound, Jurkat H3K27ac",0.13443830570902393
