@@ -39,11 +39,11 @@ assert abs(bench_ratio - 2.47) < 0.005, bench_ratio
 prov = [('panel 1', 'Monocytes, sorted CD4+ controls (%)', mono_ctrl), ('panel 1', 'Monocytes, ATL blood (%)', mono_atl),
         ('panel 1', 'CD8 T cells, sorted CD4+ controls (%)', cd8_ctrl), ('panel 1', 'CD8 T cells, ATL blood (%)', cd8_atl)]
 
-gs = fig.add_gridspec(1, 3, width_ratios=[1.05, 1.0, 1.15],
-                      left=0.075, right=0.965, top=0.94, bottom=0.36, wspace=0.40)
+# explicit positions (fractions of the figure): panel 3 keeps a label zone of its own, 0.63 to 0.78
+POS = [[0.090, 0.385, 0.195, 0.535], [0.440, 0.385, 0.175, 0.535], [0.790, 0.385, 0.190, 0.535]]
 
 # ---- panel 1: composition ----
-ax = fig.add_subplot(gs[0, 0])
+ax = fig.add_axes(POS[0]); axes_all = [ax]
 x = np.arange(2)
 ax.bar(x - 0.19, [mono_ctrl, cd8_ctrl], width=0.36, color=GREY, edgecolor='none')
 ax.bar(x + 0.19, [mono_atl, cd8_atl], width=0.36, color=MAROON, edgecolor='none')
@@ -61,7 +61,7 @@ ax.text(0.5, -0.24, 'Cases and controls are\ndifferent cell mixtures',
         transform=ax.transAxes, ha='center', va='top', fontsize=5.6, color=SLATE)
 
 # ---- panel 2: per-gene correlation ----
-ax = fig.add_subplot(gs[0, 1])
+ax = fig.add_axes(POS[1]); axes_all.append(ax)
 P = pd.read_csv('results/results_cibersortx_per_gene.csv')
 xcol = [c for c in P.columns if 'rho' in c][0]; ycol = [c for c in P.columns if 'cohen' in c][0]
 mono, eff = P[xcol].values, P[ycol].values
@@ -75,16 +75,16 @@ ax.axhline(0, color=GREY, lw=0.5); ax.axvline(0, color=GREY, lw=0.5)
 prov += [('panel 2', f'{g} (Spearman rho with LM22 monocyte fraction; Cohen d ATL vs control)', f'{a:.6f}; {c:.6f}') for g, a, c in zip(P.gene, mono, eff)]
 prov += [('panel 2', 'Pearson r across the points', r_real)]
 ax.set_xlabel('Correlation with monocyte fraction')
-ax.set_ylabel('Apparent ATL effect (Cohen d)')
+ax.set_ylabel('Apparent ATL effect ($d$)')
 ax.tick_params(length=2)
 ax.spines[['top', 'right']].set_visible(False)
 ax.text(0.04, 0.95, 'r = 0.841', transform=ax.transAxes, va='top',
         fontsize=7.0, color=MAROON, fontweight='bold')
-ax.text(0.5, -0.34, 'Monocyte content predicts the apparent\neffect of each of 51 autophagy genes',
+ax.text(0.5, -0.36, 'Monocyte content predicts the\napparent effect of each of\n51 autophagy genes',
         transform=ax.transAxes, ha='center', va='top', fontsize=5.6, color=SLATE)
 
 # ---- panel 3: chromatin, effect over detection bound ----
-ax = fig.add_subplot(gs[0, 2])
+ax = fig.add_axes(POS[2]); axes_all.append(ax)
 labels = ['NF-\u03baB control', 'CLEAR', 'initiation', 'fusion', 'elongation']
 vals = [bench_ratio, ratio['clear'], ratio['initiation'], ratio['fusion'], ratio['elongation']]
 prov += [('panel 3', f'{l}: observed effect / detection bound, Jurkat H3K27ac', v) for l, v in zip(labels, vals)]
@@ -93,14 +93,44 @@ y = np.arange(len(labels))[::-1]
 ax.barh(y, vals, height=0.62, color=cols, edgecolor='none')
 ax.axvline(1.0, color=SLATE, ls='--', lw=0.9)
 ax.set_yticks(y); ax.set_yticklabels(labels)
-ax.set_xlabel('Observed effect / detection bound')
+ax.set_xlabel('Observed effect / detection bound', ha='right', x=1.0)
 ax.set_xlim(0, 2.9)
 ax.set_ylim(-0.6, 4.9)
 ax.spines[['top', 'right']].set_visible(False)
 ax.tick_params(length=2)
-ax.text(1.06, 4.55, 'detection threshold', fontsize=5.2, color=SLATE, va='center')
-ax.text(0.5, -0.34, 'Tax moves NF-\u03baB loci; autophagy\nloci stay below the bound (Jurkat)',
+ax.text(1.07, 0.55, 'detection\nthreshold', fontsize=5.2, color=SLATE, va='center')
+ax.text(0.5, -0.36, 'Tax moves NF-\u03baB loci;\nautophagy loci stay below\nthe bound (Jurkat)',
         transform=ax.transAxes, ha='center', va='top', fontsize=5.2, color=SLATE)
+
+
+def check_layout(fig, axes, names):
+    """Fail if any axis label, tick label or in-panel text of one panel enters another panel's plot area or
+    another panel's labels, or runs off the canvas."""
+    fig.canvas.draw(); rend = fig.canvas.get_renderer()
+    Wpx, Hpx = fig.get_size_inches() * fig.dpi
+    items = {}
+    for a, n in zip(axes, names):
+        it = [a.xaxis.get_tightbbox(rend), a.yaxis.get_tightbbox(rend)] + [t.get_window_extent(rend) for t in a.texts if t.get_text().strip()]
+        lg = a.get_legend()
+        if lg is not None: it.append(lg.get_window_extent(rend))
+        items[n] = [b for b in it if b is not None and b.width > 0]
+    areas = {n: a.get_window_extent(rend) for a, n in zip(axes, names)}
+    bad = []
+    for n, bl in items.items():
+        for b in bl:
+            if b.x0 < -0.5 or b.y0 < -0.5 or b.x1 > Wpx + 0.5 or b.y1 > Hpx + 0.5: bad.append(f'{n}: text runs off the canvas')
+            for m in names:
+                if m == n: continue
+                if b.overlaps(areas[m]): bad.append(f'{n}: labels enter the plot area of {m}')
+                if any(b.overlaps(c) for c in items[m]): bad.append(f'{n}: labels touch the labels of {m}')
+    assert not bad, '; '.join(sorted(set(bad)))
+    print('  layout check passed (no label enters another panel or leaves the canvas):', ', '.join(names))
+
+check_layout(fig, axes_all, ['a', 'b', 'c'])
+fig.canvas.draw()
+for ax_, ch in zip(axes_all, 'abc'):
+    tb = ax_.get_tightbbox(fig.canvas.get_renderer()).transformed(fig.transFigure.inverted())
+    fig.text(max(tb.x0, 0.003), ax_.get_position().y1 + 0.025, ch, fontweight='bold', fontsize=8, va='bottom', ha='left')
 
 out = 'fig/Graphical_Abstract.tif'
 fig.savefig(out, dpi=300, format='tiff', pil_kwargs={'compression': 'tiff_lzw'},
