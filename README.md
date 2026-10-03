@@ -46,6 +46,7 @@ Every script reads its inputs from this folder and writes its tables to `results
 | File or folder | Source | Used by |
 | --- | --- | --- |
 | `GSE55851_series_matrix.txt.gz`, `GSE55851_family.soft.gz` | GEO, series GSE55851 | `run_gse55851.py` |
+| `GSE55851_RAW.tar` | GEO, series GSE55851, supplementary file (per-sample Agilent files, 54 MB) | `gse55851_from_raw.py`, `sorted_cohort_sensitivity.py` |
 | `GSE316417_RNA-seq_raw_counts_all_samples.txt.gz` | GEO, series GSE316417, supplementary file | `run_tax_arm.py` |
 | `bw2/` with the H3K27ac CUT&Tag bigWig files | GEO, series GSE316419 | `run_chromatin_arm.py`, `sharpen_chromatin.py` |
 | `atac/` with the ATAC bigWig files | GEO, series GSE316418 | `run_atac_arm.py` |
@@ -57,7 +58,7 @@ The two GSE33615 files and the Hallmark collection are committed. `test_wang_iha
 
 ### Reproducibility check (release 1.4)
 
-The expression arm was re-run from a fresh copy of this repository: `run_gse33615.py`, `run_mcpcounter.py`, `run_cibersortx.py`, `composition_analysis.py`, `check_composition.py`, `pathway_survey.py`, `test_wang_iha.py`, `power_analysis.py`, `insilico_mixing.py`, `make_figures.py` and `make_fig6.py`. Every table that had been deposited before was reproduced with a maximum difference of zero, except `results_insilico_mixing.csv`: its four autophagy modules agree to within 0.01 in Cohen d and the CLEAR crossing is 6.58 percent against 6.62 percent, but its Hallmark rows, which the manuscript does not cite, differ, and the regenerated table replaces the earlier one. Six tables that the figure and adjustment scripts write had never been deposited and are now included, among them `results_cibersortx_per_gene.csv`, the source of Figure 1a (r = 0.841). The chromatin scripts were not re-run here, since they need the bigWig downloads, and `csi_metric.py` needs the licensed MSigDB collections.
+The expression arm was re-run from a fresh copy of this repository: `run_gse33615.py`, `run_mcpcounter.py`, `run_cibersortx.py`, `composition_analysis.py`, `check_composition.py`, `pathway_survey.py`, `test_wang_iha.py`, `power_analysis.py`, `insilico_mixing.py`, `make_figures.py` and `make_fig6.py`. Every table that had been deposited before was reproduced with a maximum difference of zero, except `results_insilico_mixing.csv`: its four autophagy modules agree to within 0.01 in Cohen d and the CLEAR crossing is 6.58 percent against 6.62 percent, but its Hallmark rows, which the manuscript does not cite, differ, and the regenerated table replaces the earlier one. Six tables that the figure and adjustment scripts write had never been deposited and are now included, among them `results_cibersortx_per_gene.csv`, the source of Figure 1a (r = 0.841). The sorted cohort was also rebuilt from the raw Agilent files in `GSE55851_RAW.tar`; with the `gProcessedSignal` column the rebuilt matrix reproduces `results_gse55851_scores.csv` with a maximum difference of 0.0000 over all 84 values. The chromatin scripts were not re-run here, since they need the bigWig downloads, and `csi_metric.py` needs the licensed MSigDB collections.
 
 ## Pre-specification
 
@@ -89,6 +90,8 @@ It was written on 17 August 2026, before any dataset was opened, and is reproduc
 | `gene_level_csi.py` | Composition sensitivity index computed gene by gene |
 | `kegg_lysosome_decomposition.py` | KEGG_LYSOSOME index decomposed by gene and family |
 | `sensitivity_checks.py` | Enrichment exponent, TFEB inside CLEAR, and composition of the non-T pool |
+| `gse55851_from_raw.py` | Rebuilds the sorted-cohort (GSE55851) expression matrix from the raw Agilent files and confirms that it reproduces the deposited module scores |
+| `sorted_cohort_sensitivity.py` | Enrichment exponent check in the sorted cohort: paired and between-donor results at exponents 0, 0.25 and 0.5 |
 | `make_graphical_abstract.py` | Graphical abstract; reads every plotted number from the tables and writes them to `results/results_graphical_abstract_data.csv` |
 | `make_figures.py`, `make_fig6.py` | Figures 1, 2, 5, 6 and Figure 4 |
 | `build_ms.js` | Builds the manuscript document |
